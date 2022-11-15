@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.gmnoprint span,
+.gm-svpc,
+div#map button,
+div#map a,
+div.gm-bundled-control,
+div.gmnoprint {
+    display: none !important;
+}
