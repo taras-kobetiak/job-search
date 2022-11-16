@@ -9,21 +9,28 @@ import { Loader } from '@googlemaps/js-api-loader';
 export class MapsComponent implements OnInit {
 
   map: google.maps.Map;
-
+  myLatLng = { lat: 16.8041244, lng: 47.139488 }
 
   ngOnInit(): void {
 
     let loader = new Loader({
-      apiKey: "AIzaSyBwvLprVfcd1yl2skYYkGk6clqw49rnRCQ&language=en"
+      apiKey: "AIzaSyBwvLprVfcd1yl2skYYkGkasdage=en"
+
+
+      // apiKey: "AIzaSyBwvLprVfcd1yl2skYYkGk6clqw49rnRCQ&language=en"
     })
 
     loader.load().then(() => {
-      console.log(1);
-      this.map = new google.maps.Map(document.getElementById('map')!, {
-        center: { lat: 6.8041244, lng: 47.139488 },
+      this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+        center: this.myLatLng,
         zoom: 4,
-        mapId: '3007160f8e930d13'
+        mapId: '3007160f8e930d13',
       })
+
+      new google.maps.Marker({
+        position: this.myLatLng,
+        map: this.map
+      });
     })
   }
 }
