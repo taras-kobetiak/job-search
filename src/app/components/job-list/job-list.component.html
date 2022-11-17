@@ -1,6 +1,31 @@
 <div>
-    <div *ngFor="let job of jobList">
+
+    <div *ngFor="let job of jobListToShow">
+        <img src="{{job.pictures[0]}}" alt="">
+
         <p>{{job.title}}</p>
-        <p>{{job.description}}</p>
+
+
+        <p>{{job.fullLocation}}</p>
+        <p>{{job.shortLocation}}</p>
+
+
+
+        <div (click)="isRatedClick(job)" [hidden]="job.isRated">Not rated</div>
+        <div (click)="isRatedClick(job)" [hidden]="!job.isRated">Is rated</div>
+
+
+        <ngx-star-rating [(ngModel)]="job.stars" [id]="job.id"></ngx-star-rating>
+
+
+        <p>Posted {{job.daysAgo}} days ago</p>
+
     </div>
 </div>
+
+<div class="prev" (click)="prevPage()">Prev</div>
+<div *ngFor="let page of pages">
+    <nav>{{page}}</nav>
+</div>
+
+<div class="prev" (click)="nextPage()">Next</div>

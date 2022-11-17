@@ -8,6 +8,8 @@ import { JobListComponent } from './components/job-list/job-list.component';
 import { JobPageComponent } from './components/job-page/job-page.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MapsComponent } from './components/maps/maps.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MapsComponent } from './components/maps/maps.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    NgxStarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
