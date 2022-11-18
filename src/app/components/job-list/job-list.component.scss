@@ -23,5 +23,17 @@
     text-shadow: none !important;
 }
 
-
 /*================================================*/
+
+
+.pages__items {
+    display: flex;
+
+    input {
+        display: none;
+    }
+
+    input:checked+label {
+        text-decoration: underline;
+    }
+}

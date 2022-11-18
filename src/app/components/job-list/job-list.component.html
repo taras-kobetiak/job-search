@@ -24,8 +24,11 @@
 </div>
 
 <div class="prev" (click)="prevPage()">Prev</div>
-<div *ngFor="let page of pages">
-    <nav>{{page}}</nav>
+<div class="pages__items">
+    <div *ngFor="let page of pages" class="pages__item">
+        <input class="pages__radio" [id]="page" [checked]="currentPage === page" type="radio" id="{{page}}"
+            name="pagesButton">
+        <label (click)="pageClick(page)" class="pages__label" for="{{page}}">{{page}}</label>
+    </div>
 </div>
-
 <div class="prev" (click)="nextPage()">Next</div>

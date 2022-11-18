@@ -4,9 +4,10 @@ import { IJobFullInfo } from 'src/app/interfaces/jobFullInfo.interface';
 import { IJob } from 'src/app/interfaces/job.interface';
 import { JobListService } from 'src/app/services/job-list/job-list.service';
 import { LocationInfoService } from 'src/app/services/location-info/location-info.service';
+import { FormArray, FormControl } from '@angular/forms';
 
 
-const JOB_NUMBER_PER_PAGE = 19;
+const JOB_NUMBER_PER_PAGE = 3;
 
 @Component({
   selector: 'app-job-list',
@@ -19,7 +20,9 @@ export class JobListComponent implements OnInit, OnDestroy {
 
   from: number = 0;
   to: number = JOB_NUMBER_PER_PAGE;
+
   pages: number[] = [];
+  currentPage: number = 1;
 
   private unsubscribingData$: Subject<void> = new Subject<void>();
 
@@ -39,6 +42,10 @@ export class JobListComponent implements OnInit, OnDestroy {
         for (let i = 1; i <= pagesAmount; i++) {
           this.pages.push(i)
         }
+
+
+
+
 
         this.jobFullInfoList.forEach((job: IJobFullInfo, index) => {
           job.isRated = false;
@@ -68,40 +75,43 @@ export class JobListComponent implements OnInit, OnDestroy {
           }
         })
       })
+
   }
-
-
-
-
-
-
 
   isRatedClick(job: IJobFullInfo): void {
     job.isRated = !job.isRated;
   }
 
   prevPage(): void {
+    if (this.currentPage === this.pages[0]) {
+      return;
+    }
     this.from -= JOB_NUMBER_PER_PAGE;
     this.to = this.from + JOB_NUMBER_PER_PAGE;
-    if (this.from < 0) {
-      this.from = 0;
-      this.to = JOB_NUMBER_PER_PAGE;
-    }
+
     this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
   }
 
   nextPage(): void {
-
-
+    if (this.currentPage === this.pages.slice(-1)[0]) {
+      return;
+    }
+    this.currentPage += 1;
+    let input = document.getElementById(`${this.currentPage}`)
+    input?.setAttribute('checked', 'true')
 
     this.from += JOB_NUMBER_PER_PAGE;
     this.to += JOB_NUMBER_PER_PAGE;
-    if (this.to > this.jobFullInfoList.length) {
-      this.from = this.pages.slice(-2, -1)[0] * JOB_NUMBER_PER_PAGE;
-      this.to = this.jobFullInfoList.length;
-    }
     this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
-    console.log(this.from, this.to);
+  }
+
+  pageClick(page: number) {
+    this.currentPage = page;
+    this.from = (page - 1) * JOB_NUMBER_PER_PAGE;
+    this.to = page * JOB_NUMBER_PER_PAGE;
+    this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
+
+
   }
 
   ngOnDestroy(): void {
