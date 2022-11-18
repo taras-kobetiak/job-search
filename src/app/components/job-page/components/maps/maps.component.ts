@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
+import { LoadingService } from 'src/app/services/loading/loading-service.service';
 
 @Component({
   selector: 'app-maps',
@@ -14,9 +15,10 @@ export class MapsComponent implements OnInit {
 
   info: any;
 
+  constructor(private loadingService: LoadingService) { }
 
   ngOnInit(): void {
-
+    // this.loadingService.setValue(true);
     let loader = new Loader({
       apiKey: "AIzas"
       // apiKey: "AIzaSyBwvLprVfcd1yl2skYYkGk6clqw49rnRCQ&language=en"
@@ -33,6 +35,8 @@ export class MapsComponent implements OnInit {
         position: this.myLatLng,
         map: this.map
       });
+
+      // this.loadingService.setValue(true);
     })
   }
 }

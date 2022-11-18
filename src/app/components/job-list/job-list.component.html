@@ -3,7 +3,7 @@
     <div *ngFor="let job of jobListToShow">
         <img src="{{job.pictures[0]}}" alt="">
 
-        <p>{{job.title}}</p>
+        <p [routerLink]="['/vacancies-list', job.name]">{{job.title}}</p>
 
 
         <p>{{job.fullLocation}}</p>

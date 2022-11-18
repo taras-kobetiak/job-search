@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { IJobFullInfo } from 'src/app/interfaces/jobFullInfo.interface';
 import { IJob } from 'src/app/interfaces/job.interface';
-import { JobListService } from 'src/app/services/job-list/job-list.service';
+import { JobInfoService } from 'src/app/services/job-info/job-info.service';
 import { LocationInfoService } from 'src/app/services/location-info/location-info.service';
-import { FormArray, FormControl } from '@angular/forms';
+import { LoadingService } from 'src/app/services/loading/loading-service.service';
 
 
 const JOB_NUMBER_PER_PAGE = 3;
@@ -27,25 +27,42 @@ export class JobListComponent implements OnInit, OnDestroy {
   private unsubscribingData$: Subject<void> = new Subject<void>();
 
   constructor(
-    private jobListService: JobListService,
-    private locationInfo: LocationInfoService) { }
+    private jobInfoService: JobInfoService,
+    private locationInfo: LocationInfoService,
+    private loadingService: LoadingService
+  ) { }
 
   ngOnInit(): void {
-    this.jobListService.getJobList().pipe(
+
+    let jobListJson = localStorage.getItem('jobList');
+    if (jobListJson) {
+
+      this.jobFullInfoList = JSON.parse(jobListJson);
+      this.updateJobList();
+
+    } else {
+      this.getJobList();
+    }
+  }
+
+  getJobList(): void {
+    this.loadingService.setValue(true);
+
+    this.jobInfoService.getJobList().pipe(
       takeUntil(this.unsubscribingData$)
     ).
       subscribe((jobList: IJob[]) => {
         this.jobFullInfoList = jobList;
-
         this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
+
+
+
+
+
         let pagesAmount = Math.ceil(this.jobFullInfoList.length / JOB_NUMBER_PER_PAGE);
         for (let i = 1; i <= pagesAmount; i++) {
           this.pages.push(i)
         }
-
-
-
-
 
         this.jobFullInfoList.forEach((job: IJobFullInfo, index) => {
           job.isRated = false;
@@ -69,27 +86,40 @@ export class JobListComponent implements OnInit, OnDestroy {
           // })
 
           job.daysAgo = Math.round((Number(new Date()) - Number(new Date(job.createdAt))) / 1000 / 60 / 60 / 24);
-
           if (index === 2 || index === 5) {
             job.stars = 5;
           }
+
+          let listJson = JSON.stringify(this.jobFullInfoList);
+          localStorage.setItem('jobList', listJson);
+
+          this.loadingService.setValue(false)
         })
       })
+
 
   }
 
   isRatedClick(job: IJobFullInfo): void {
     job.isRated = !job.isRated;
+
+    localStorage.removeItem('jobList')
+    let listJson = JSON.stringify(this.jobFullInfoList);
+    localStorage.setItem('jobList', listJson);
+
   }
 
   prevPage(): void {
     if (this.currentPage === this.pages[0]) {
       return;
     }
+    this.currentPage -= 1;
+    let input = document.getElementById(`${this.currentPage}`);
+    input?.setAttribute('checked', 'true');
+
     this.from -= JOB_NUMBER_PER_PAGE;
     this.to = this.from + JOB_NUMBER_PER_PAGE;
-
-    this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
+    this.updateJobList();
   }
 
   nextPage(): void {
@@ -101,17 +131,19 @@ export class JobListComponent implements OnInit, OnDestroy {
     input?.setAttribute('checked', 'true')
 
     this.from += JOB_NUMBER_PER_PAGE;
-    this.to += JOB_NUMBER_PER_PAGE;
-    this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
+    this.to = this.from + JOB_NUMBER_PER_PAGE;
+    this.updateJobList();
   }
 
-  pageClick(page: number) {
+  pageClick(page: number): void {
     this.currentPage = page;
     this.from = (page - 1) * JOB_NUMBER_PER_PAGE;
     this.to = page * JOB_NUMBER_PER_PAGE;
+    this.updateJobList();
+  }
+
+  updateJobList(): void {
     this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
-
-
   }
 
   ngOnDestroy(): void {

@@ -1,3 +1,5 @@
-<app-job-list></app-job-list>
+<router-outlet *ngIf="!(isLoading$ | async)"></router-outlet>
 
-<app-maps></app-maps>
+<div class="loading" *ngIf="isLoading$ | async">
+    <img src="https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp" alt="">
+</div>

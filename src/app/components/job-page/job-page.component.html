@@ -1,1 +1,30 @@
-<p>job-page works!</p>
+{{currentJob.address}}
+{{currentJob.phone}}
+<app-maps></app-maps>
+
+<br><br><br>
+{{currentJob.isRated}}
+
+{{currentJob.title}}
+
+{{currentJob.salary}}
+
+Posted{{currentJob.daysAgo}} days daysAgo
+{{currentJob.description}}
+
+
+<div *ngFor="let employmentType of currentJob.employment_type">
+    <p>{{employmentType}}</p>
+</div>
+
+<div *ngFor="let benefit of currentJob.benefits">
+    <p>{{benefit}}</p>
+</div>
+
+<div *ngFor="let img of currentJob.pictures">
+    <img [src]="img" alt="">
+</div>
+
+
+
+<button [routerLink]="'/vacancies-list'">Back</button>
