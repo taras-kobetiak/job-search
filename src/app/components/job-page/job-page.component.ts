@@ -27,13 +27,6 @@ export class JobPageComponent implements OnInit {
     if (jobListJson) {
       let fullJobList = JSON.parse(jobListJson);
       this.currentJob = fullJobList.find((job: IJobFullInfo) => job.name === this.jobName);
-
-      console.log(this.currentJob);
-
     }
-
-
-
   }
-
 }

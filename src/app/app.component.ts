@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private loadingService: LoadingService) { }
 
   ngOnInit(): void {
-    this.isLoading$ = this.loadingService.getIsLoadingValue();
+    setTimeout(() => this.isLoading$ = this.loadingService.getIsLoadingValue(), 0);
   }
 }
