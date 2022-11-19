@@ -1,34 +1,74 @@
-<div>
-
-    <div *ngFor="let job of jobListToShow">
-        <img src="{{job.pictures[0]}}" alt="">
-
-        <p [routerLink]="['/vacancies-list', job.name]">{{job.title}}</p>
+<main class="max-w-full min-h-screen bg-neutral-100 flex flex-col justify-between items-center">
 
 
-        <p>{{job.fullLocation}}</p>
-        <p>{{job.shortLocation}}</p>
+    <section class=" max-w-7xl my-0 mx-auto px-20 py-4 flex flex-col gap-2">
+
+        <div *ngFor="let job of jobListToShow"
+            class="px-4 py-6 rounded-lg bg-white flex justify-between shrink-0 gap-6 shadow">
+
+            <div>
+                <img class="logo" src="{{job.pictures[0]}}" alt="logo">
+            </div>
+
+
+            <div class="flex flex-col grow-1 gap-2 width">
+                <div>
+                    <p [routerLink]="['/vacancies-list', job.name]"
+                        class="text-xl font-bold cursor-pointer hover:font-shadow-sm">
+                        {{job.title}}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-base gray">{{job.fullLocation}}</p>
+                </div>
+                <div class="flex flex-row items-center gap-2">
+                    <img class="w-3 h-3.5" src="../../../assets/img/Combined Shape.png" alt="marker">
+                    <p class="text-base gray">{{job.shortLocation}}</p>
+                </div>
+            </div>
 
 
 
-        <div (click)="isRatedClick(job)" [hidden]="job.isRated">Not rated</div>
-        <div (click)="isRatedClick(job)" [hidden]="!job.isRated">Is rated</div>
+            <div class="self-center shrink-0">
+                <ngx-star-rating [(ngModel)]="job.stars" [id]="job.id"></ngx-star-rating>
+            </div>
+
+            <div class="flex flex-col justify-between shrink-0">
+                <div class="self-end">
+                    <img (click)="isRatedClick(job)" [hidden]="!job.isRated"
+                        class="w-5 h-5 cursor-pointer hover:scale-105" src="../../../assets/img/bookmark-filled.png"
+                        alt="bookmark-filled">
+                    <img (click)="isRatedClick(job)" [hidden]="job.isRated"
+                        class="w-5 h-5 cursor-pointer hover:scale-105" src="../../../assets/img/bookmark-empty.png"
+                        alt="bookmark-empty">
+                </div>
+                <p class="text-base gray">Posted {{job.daysAgo}} days ago</p>
+            </div>
+
+        </div>
+    </section>
 
 
-        <ngx-star-rating [(ngModel)]="job.stars" [id]="job.id"></ngx-star-rating>
+    <section class="mt-12 mb-16 px-6 py-4 bg-white rounded-xl flex items-center gap-5 shadow">
+        <div class="prev" (click)="prevPage()">
+            <img src="../../../assets/img/Arrow left.png" alt="Arrow1" class="cursor-pointer active:col-">
+        </div>
+        <div>
+            <img src="../../../assets/img/Separator 1.png" alt="Separator">
+        </div>
+        <div class="pages__items">
+            <div *ngFor="let page of pages" class="pages__item">
+                <input class="pages__radio" [id]="page" [checked]="currentPage === page" type="radio" id="{{page}}"
+                    name="pagesButton">
+                <label (click)="pageClick(page)" for="{{page}}" class="pages__label cursor-pointer">{{page}}</label>
+            </div>
+        </div>
+        <div>
+            <img src="../../../assets/img/Separator 1.png" alt="Separator">
+        </div>
+        <div class="prev" (click)="nextPage()">
+            <img src="../../../assets/img/Arrow right.png" alt="Arrow2" class="cursor-pointer">
+        </div>
+    </section>
 
-
-        <p>Posted {{job.daysAgo}} days ago</p>
-
-    </div>
-</div>
-
-<div class="prev" (click)="prevPage()">Prev</div>
-<div class="pages__items">
-    <div *ngFor="let page of pages" class="pages__item">
-        <input class="pages__radio" [id]="page" [checked]="currentPage === page" type="radio" id="{{page}}"
-            name="pagesButton">
-        <label (click)="pageClick(page)" class="pages__label" for="{{page}}">{{page}}</label>
-    </div>
-</div>
-<div class="prev" (click)="nextPage()">Next</div>
+</main>

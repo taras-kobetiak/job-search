@@ -4,6 +4,7 @@
     padding: 0 5px !important;
     font-size: 20px !important;
     color: rgb(240, 238, 238) !important;
+    cursor: pointer !important;
 
     &:hover {
         transform: none !important;
@@ -24,7 +25,15 @@
 }
 
 /*================================================*/
+.logo {
+    width: 85px;
+    min-width: 85px;
+    height: 85px;
+    min-height: 85px;
+    border-radius: 50%;
+}
 
+/*================================================*/
 
 .pages__items {
     display: flex;
@@ -34,6 +43,30 @@
     }
 
     input:checked+label {
-        text-decoration: underline;
+        color: #5876C5;
+        border-bottom: 1px solid #5876C5;
+    }
+
+    .pages__label {
+        padding: 10px;
+        font-size: 20.8px;
+        line-height: 25px;
+        color: #70778B;
     }
 }
+
+/*================================================*/
+
+.shadow {
+    box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08), 0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.gray {
+    color: #878D9D;
+}
+
+.width {
+    width: 959px;
+}
+
+.test {}

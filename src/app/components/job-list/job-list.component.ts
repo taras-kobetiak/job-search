@@ -7,7 +7,7 @@ import { LocationInfoService } from 'src/app/services/location-info/location-inf
 import { LoadingService } from 'src/app/services/loading/loading-service.service';
 
 
-const JOB_NUMBER_PER_PAGE = 3;
+const JOB_NUMBER_PER_PAGE = 15;
 
 @Component({
   selector: 'app-job-list',
