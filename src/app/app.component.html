@@ -1,5 +1,10 @@
-<router-outlet *ngIf="!(isLoading$ | async)"></router-outlet>
+<div class="wrapper">
+    <router-outlet></router-outlet>
 
-<div class="loading" *ngIf="isLoading$ | async">
-    <img src="https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp" alt="">
+
+    <div class="loading" *ngIf="isLoading$ | async">
+        <div class="gif">
+            <img src="https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp" alt="">
+        </div>
+    </div>
 </div>
