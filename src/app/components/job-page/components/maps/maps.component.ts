@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { IJobFullInfo } from 'src/app/interfaces/jobFullInfo.interface';
 import { LoadingService } from 'src/app/services/loading/loading-service.service';
@@ -9,7 +9,7 @@ import { ILatLng } from '../../interfaces/lat-lng.interface';
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.scss']
 })
-export class MapsComponent implements OnInit {
+export class MapsComponent implements OnInit, AfterViewInit {
   @Input() currentJob: IJobFullInfo;
 
   map: google.maps.Map;
@@ -18,6 +18,8 @@ export class MapsComponent implements OnInit {
   constructor(private loadingService: LoadingService) { }
 
   ngOnInit(): void {
+
+
     this.myLatLng.lat = Number(this.currentJob.location.lat);
     this.myLatLng.lng = Number(this.currentJob.location.long);
     let loader = new Loader({
@@ -36,8 +38,15 @@ export class MapsComponent implements OnInit {
         map: this.map,
         icon: "../../../../../assets/img/Shape.png"
       });
+
+      this.loadingService.setValue(false);
     })
   }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.loadingService.setValue(true), 0)
+  }
+
 }
 
 

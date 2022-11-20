@@ -23,6 +23,22 @@
     background: rgba(56, 69, 100, 0.14);
 }
 
+.border {
+    border: 1px solid red;
+}
+
 .margin {
-    margin-left: 10%;
+    margin-left: 15%;
+
+    @media(min-width: 1536px) {
+        margin-left: 18%;
+    }
+
+    @media(min-width: 1920px) {
+        margin-left: 20%;
+    }
+
+    @media(min-width: 2500px) {
+        margin-left: 27%;
+    }
 }

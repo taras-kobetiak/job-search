@@ -27,7 +27,7 @@
                         <div class="item-reviews__rating simple-rating">
                             <div class="simple-rating__items">
                                 <input [id]="job.id+5" type="radio" class="simple-rating__item" [name]="job.id"
-                                    value="5">
+                                    value="5" [(ngModel)]="job.stars">
                                 <label [for]="job.id+5" class="simple-rating__label"></label>
                                 <input [id]="job.id+4" type="radio" class="simple-rating__item" [name]="job.id"
                                     value="4">

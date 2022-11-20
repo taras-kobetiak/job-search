@@ -118,7 +118,10 @@ export class JobListComponent implements OnInit, OnDestroy {
   }
 
   onStarClicked(): void {
-    this.upgradeJsonData();
+
+    console.log(this.jobFullInfoList[0].stars);
+
+    // this.upgradeJsonData();
   }
 
   prevPage(): void {
