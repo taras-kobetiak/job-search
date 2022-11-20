@@ -1,31 +1,57 @@
 /*================================================*/
-
-::ng-deep label.star {
-    padding: 0 1px !important;
-    font-size: 12px !important;
-    color: rgb(240, 238, 238) !important;
-    cursor: pointer !important;
-
-    @media (min-width: 1024px) {
-        font-size: 20px !important;
-    }
-
-    &:hover {
-        transform: none !important;
-        color: rgb(176, 172, 172) !important;
-    }
-
-    &::before {
-        content: '\f005' !important;
-    }
+.simple-rating {
+    position: relative;
+    font-size: 24px;
+    display: inline-block;
 }
 
-::ng-deep input.star:checked~label.star:before {
-    color: #38415D !important;
+.simple-rating::before {
+    content: "★★★★★";
+    display: block;
 }
 
-::ng-deep input.star-5:checked~label.star:before {
-    text-shadow: none !important;
+.simple-rating__items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+
+.simple-rating__item {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.simple-rating__label {
+    cursor: pointer;
+    color: #e7e8ed;
+    height: 100%;
+    flex: 0 0 20%;
+}
+
+.simple-rating__label::before {
+    content: "★";
+    display: block;
+    transition: color 0.3s ease 0s;
+}
+
+.simple-rating__item:checked,
+.simple-rating__item:checked~.simple-rating__label {
+    color: #38415D;
+}
+
+.simple-rating__label:hover,
+.simple-rating__label:hover~.simple-rating__label,
+.simple-rating__label:checked~.simple-rating__label:hover {
+    color: #2d354b;
 }
 
 /*================================================*/

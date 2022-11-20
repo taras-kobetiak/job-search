@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { JobListComponent } from './components/job-list/job-list.component';
 import { JobPageComponent } from './components/job-page/job-page.component';
 import { MapsComponent } from './components/job-page/components/maps/maps.component';
-// import { NgxStarRatingModule } from 'ngx-star-rating';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -23,8 +22,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    // NgxStarRatingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

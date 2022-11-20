@@ -39,6 +39,8 @@ export class JobListComponent implements OnInit, OnDestroy {
       this.updateJobList();
       this.pages = JSON.parse(pages)
 
+
+
     } else {
       this.getJobList();
     }
@@ -49,6 +51,7 @@ export class JobListComponent implements OnInit, OnDestroy {
     this.jobInfoService.getJobList().pipe(
       switchMap((jobList: IJob[]) => {
         this.jobFullInfoList = jobList;
+
         this.jobListToShow = this.jobFullInfoList.slice(this.from, this.to);
         let pagesAmount = Math.ceil(this.jobFullInfoList.length / JOB_NUMBER_PER_PAGE);
         this.pages = [];

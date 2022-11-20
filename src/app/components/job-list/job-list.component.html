@@ -24,10 +24,25 @@
                 <div class="shrink-0 flex justify-between gap-4">
                     <div class="self-center shrink-0">
 
-
-                        <!-- <ngx-star-rating [(ngModel)]="job.stars" [id]="job.id" (click)="onStarClicked()">
-                        </ngx-star-rating> -->
-
+                        <div class="item-reviews__rating simple-rating">
+                            <div class="simple-rating__items">
+                                <input [id]="job.id+5" type="radio" class="simple-rating__item" [name]="job.id"
+                                    value="5">
+                                <label [for]="job.id+5" class="simple-rating__label"></label>
+                                <input [id]="job.id+4" type="radio" class="simple-rating__item" [name]="job.id"
+                                    value="4">
+                                <label [for]="job.id+4" class="simple-rating__label"></label>
+                                <input [id]="job.id+3" type="radio" class="simple-rating__item" [name]="job.id"
+                                    value="3">
+                                <label [for]="job.id+3" class="simple-rating__label"></label>
+                                <input [id]="job.id+2" type="radio" class="simple-rating__item" [name]="job.id"
+                                    value="2">
+                                <label [for]="job.id+2" class="simple-rating__label"></label>
+                                <input [id]="job.id+1" type="radio" class="simple-rating__item" [name]="job.id"
+                                    value="1">
+                                <label [for]="job.id+1" class="simple-rating__label"></label>
+                            </div>
+                        </div>
 
 
                     </div>
