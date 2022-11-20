@@ -38,9 +38,6 @@ export class JobListComponent implements OnInit, OnDestroy {
       this.jobFullInfoList = JSON.parse(jobListJson);
       this.updateJobList();
       this.pages = JSON.parse(pages)
-
-
-
     } else {
       this.getJobList();
     }
@@ -48,6 +45,7 @@ export class JobListComponent implements OnInit, OnDestroy {
 
   getJobList(): void {
     this.loadingService.setValue(true);
+
     this.jobInfoService.getJobList().pipe(
       switchMap((jobList: IJob[]) => {
         this.jobFullInfoList = jobList;
@@ -66,8 +64,8 @@ export class JobListComponent implements OnInit, OnDestroy {
       subscribe((addressArray: any) => {
         this.setFullInfo(addressArray);
         this.setJsonData();
+        this.loadingService.setValue(false);
       })
-    this.loadingService.setValue(false);
   }
 
   setFullInfo(addressArray: any): void {
@@ -118,8 +116,6 @@ export class JobListComponent implements OnInit, OnDestroy {
   }
 
   onStarClicked(): void {
-
-    console.log(this.jobFullInfoList[0].stars);
 
     // this.upgradeJsonData();
   }

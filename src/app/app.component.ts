@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoadingService } from './services/loading/loading-service.service';
 
@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   isLoading$: Observable<boolean>;
 
   constructor(private loadingService: LoadingService) { }
-
   ngOnInit(): void {
     setTimeout(() => this.isLoading$ = this.loadingService.getIsLoadingValue(), 0);
   }
