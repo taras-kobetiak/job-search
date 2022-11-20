@@ -29,4 +29,8 @@ export class JobPageComponent implements OnInit {
       this.currentJob = fullJobList.find((job: IJobFullInfo) => job.name === this.jobName);
     }
   }
+
+  isRatedClick(): void {
+    this.currentJob.isRated = !this.currentJob.isRated;
+  }
 }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
+import { IJobFullInfo } from 'src/app/interfaces/jobFullInfo.interface';
 import { LoadingService } from 'src/app/services/loading/loading-service.service';
+import { ILatLng } from '../../interfaces/lat-lng.interface';
 
 @Component({
   selector: 'app-maps',
@@ -8,20 +10,18 @@ import { LoadingService } from 'src/app/services/loading/loading-service.service
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
+  @Input() currentJob: IJobFullInfo;
 
   map: google.maps.Map;
-  myLatLng = { lat: 16.8041244, lng: 47.139488 }
-
-
-  info: any;
+  myLatLng: ILatLng = { lat: 0, lng: 0 };
 
   constructor(private loadingService: LoadingService) { }
 
   ngOnInit(): void {
-    // this.loadingService.setValue(true);
+    this.myLatLng.lat = Number(this.currentJob.location.lat);
+    this.myLatLng.lng = Number(this.currentJob.location.long);
     let loader = new Loader({
-      apiKey: "AIzas"
-      // apiKey: "AIzaSyBwvLprVfcd1yl2skYYkGk6clqw49rnRCQ&language=en"
+      apiKey: "AIzaSyBwvLprVfcd1yl2skYYkGk6clqw49rnRCQ&language=en"
     })
 
     loader.load().then(() => {
@@ -35,8 +35,6 @@ export class MapsComponent implements OnInit {
         position: this.myLatLng,
         map: this.map
       });
-
-      // this.loadingService.setValue(true);
     })
   }
 }

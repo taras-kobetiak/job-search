@@ -1,2 +1,26 @@
-<div id="map" class="map">
+<div class="map">
+    <img class="hidden md:block bg-img" src="../../../../../assets/img/round.png" alt="">
+    <div class="map__wrapper">
+        <div class="map__info info-map">
+            <div class="info-map__wrapper">
+                <div class="info-map__name">
+                    {{currentJob.name}}
+                </div>
+                <div class="info-map__location">
+                    <div class="info-map__adress">
+                        <img src="../../../assets/img/CombinedShape.png" alt="marker">
+                        {{this.currentJob.fullLocation?.split(' - ')?.reverse()?.join(', ')}}
+                    </div>
+                </div>
+                <div class="info-map__phone">
+                    {{currentJob.phone}}
+                </div>
+                <div class="info-map__email">
+                    {{currentJob.email}}
+                </div>
+            </div>
+        </div>
+        <div id="map" class="map__location">
+        </div>
+    </div>
 </div>

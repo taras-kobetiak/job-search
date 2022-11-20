@@ -1,4 +1,66 @@
 .map {
-    width: 600px;
-    height: 600px;
+    width: 376px;
+    height: 438px;
+    background-color: #2A3047;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .bg-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.map__info {
+    width: 372px;
+    height: 218px;
+    background-color: #2A3047;
+    display: flex;
+}
+
+.info-map__wrapper {
+    margin: 0 auto;
+    padding-top: 30px;
+    max-width: 218px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-map__name {
+    margin-bottom: 11px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7EAF0;
+}
+
+.info-map__location {
+    font-size: 16px;
+    line-height: 33px;
+    color: #E7EAF0;
+    display: flex;
+    gap: 8px;
+}
+
+.info-map__adress {
+    img {
+        display: inline;
+    }
+}
+
+.info-map__phone,
+.info-map__email {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.669635);
+}
+
+.map__location {
+    width: 372px;
+    height: 218px;
 }
