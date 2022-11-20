@@ -1,10 +1,14 @@
 /*================================================*/
 
 ::ng-deep label.star {
-    padding: 0 5px !important;
-    font-size: 20px !important;
+    padding: 0 1px !important;
+    font-size: 12px !important;
     color: rgb(240, 238, 238) !important;
     cursor: pointer !important;
+
+    @media (min-width: 1024px) {
+        font-size: 20px !important;
+    }
 
     &:hover {
         transform: none !important;
@@ -25,12 +29,20 @@
 }
 
 /*================================================*/
+
 .logo {
-    width: 85px;
-    min-width: 85px;
-    height: 85px;
-    min-height: 85px;
+    width: 65px;
+    min-width: 65px;
+    height: 65px;
+    min-height: 65px;
     border-radius: 50%;
+
+    @media (min-width: 1024px) {
+        width: 85px;
+        min-width: 85px;
+        height: 85px;
+        min-height: 85px;
+    }
 }
 
 /*================================================*/
@@ -43,8 +55,15 @@
     }
 
     input:checked+label {
-        color: #5876C5;
-        border-bottom: 1px solid #5876C5;
+        color: #55699E;
+        border-bottom: 1px solid #55699E;
+
+        @media (min-width: 1024px) {
+            padding-bottom: 18px;
+            color: #5876C5;
+            border-bottom: 2px solid #5876C5;
+        }
+
     }
 
     .pages__label {
@@ -57,8 +76,38 @@
 
 /*================================================*/
 
+.main-bg {
+    background-color: #E6E9F2;
+}
+
+.page-bg {
+    background-color: #EFF0F5;
+
+    @media (min-width: 768px) {
+        background-color: #fff;
+    }
+}
+
 .shadow {
     box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08), 0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.nav-width {
+    min-width: 304px;
+    background-color: #F9FAFD;
+
+    @media (min-width: 576px) {
+        min-width: 368px;
+    }
+
+    @media (min-width: 640px) {
+        min-width: 432px;
+    }
+
+    @media (min-width: 768px) {
+        min-width: 0;
+        background-color: #fff;
+    }
 }
 
 .gray {
@@ -68,5 +117,3 @@
 .width {
     width: 959px;
 }
-
-.test {}
