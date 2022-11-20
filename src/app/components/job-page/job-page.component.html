@@ -11,11 +11,12 @@
                 </div>
                 <div class="mb-8 lg:mb-0 flex gap-9">
                     <div class="flex gap-2.5">
-                        <div class="w-5 md:hidden cursor-pointer" (click)="isRatedClick()">
+                        <div class="w-5 md:hidden cursor-pointer hover:scale-105 duration-200" (click)="isRatedClick()">
                             <img [hidden]="currentJob.isRated" src="../../../assets/img/star.png" alt="Star">
                             <img [hidden]="!currentJob.isRated" src="../../../assets/img/BlackStar.png" alt="RatedStar">
                         </div>
-                        <div class="w-5 hidden md:block cursor-pointer" (click)="isRatedClick()">
+                        <div class="w-5 hidden md:block cursor-pointer hover:scale-105 duration-200"
+                            (click)="isRatedClick()">
                             <img [hidden]="currentJob.isRated" src="../../../assets/img/bookmark-empty.png" alt="Star">
                             <img [hidden]="!currentJob.isRated" src="../../../assets/img/bookmark-filled.png"
                                 alt="RatedStar">
@@ -23,7 +24,7 @@
                         <div class="text-sm text-color">Save to my list</div>
                     </div>
                     <div class="flex gap-2.5 cursor-pointer">
-                        <div><img src="../../../assets/img/share.png" alt="Star"></div>
+                        <div><img src="../../../assets/img/share.png" alt="Share" class="hover:scale-105"></div>
                         <div class="text-sm text-color">Share</div>
                     </div>
                 </div>
@@ -45,7 +46,9 @@
                 {{currentJob.description}}
             </div>
             <div class="mb-32 flex justify-center lg:justify-start">
-                <button class="py-5 px-8 uppercase text-white bg-slate-600 rounded-lg">Apply now</button>
+                <button class="py-5 px-8 uppercase text-white bg-slate-600 rounded-lg
+                 hover:bg-white hover:text-slate-600 hover:border-slate-600 border-2 hover:border-solid">Apply
+                    now</button>
             </div>
             <div class="md:flex md:flex-col-reverse">
                 <div class="mb-14">
@@ -88,12 +91,13 @@
         </section>
     </div>
     <div class="ml-20 lg:ml-24 xl:ml-28 2xl:ml-32 3xl:ml-40 pb-40 hidden md:block md:w-52 2xl:w-56">
-        <div class="py-4 px-6 rounded-lg flex justify-center items-center gap-4 return-color">
+        <div class="py-4 px-6 rounded-lg flex justify-center items-center gap-4 return-color hover:scale-105">
             <div class="">
                 <img src="../../../assets/img/Arrow-job-page.png" alt="arrow">
             </div>
             <div>
-                <button class="text-xs  2xl:font-semibold uppercase" [routerLink]="'/vacancies-list'">Return to
+                <button class="text-xs  2xl:font-semibold uppercase" [routerLink]="'/vacancies-list'">Return
+                    to
                     job board</button>
             </div>
         </div>

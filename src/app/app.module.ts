@@ -11,7 +11,6 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { forkJoin, Observable, Observer, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { forkJoin, Subject, switchMap, takeUntil } from 'rxjs';
 import { IJobFullInfo } from 'src/app/interfaces/jobFullInfo.interface';
 import { IJob } from 'src/app/interfaces/job.interface';
 import { JobInfoService } from 'src/app/services/job-info/job-info.service';
 import { LocationInfoService } from 'src/app/services/location-info/location-info.service';
 import { LoadingService } from 'src/app/services/loading/loading-service.service';
-
 
 const JOB_NUMBER_PER_PAGE = 15;
 
@@ -47,7 +46,6 @@ export class JobListComponent implements OnInit, OnDestroy {
 
   getJobList(): void {
     this.loadingService.setValue(true);
-
     this.jobInfoService.getJobList().pipe(
       switchMap((jobList: IJob[]) => {
         this.jobFullInfoList = jobList;
@@ -66,7 +64,6 @@ export class JobListComponent implements OnInit, OnDestroy {
         this.setFullInfo(addressArray);
         this.setJsonData();
       })
-
     this.loadingService.setValue(false);
   }
 

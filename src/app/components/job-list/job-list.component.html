@@ -47,13 +47,13 @@
         class="mt-6 mb-4 mb- md:mt-12 md:mb-16 py-2 md:px-6 md:py-4  rounded-xl flex justify-between items-center  gap-5 shadow nav-width">
         <div class="w-1/5 cursor-pointer" (click)="prevPage()">
             <div class="w-1/5 opacity:0 md:hidden">.</div>
-            <img src="../../../assets/img/Arrow left.png" alt="Arrow1" class="hidden md:block">
+            <img src="../../../assets/img/Arrow left.png" alt="Arrow1" class="hidden md:block hover:scale-105">
         </div>
         <div>
             <img src="../../../assets/img/Separator 1.png" alt="Separator">
         </div>
         <div class="pages__items grow-1">
-            <div *ngFor="let page of pages" class="pages__item">
+            <div *ngFor="let page of pages" class="pages__item hover:scale-105">
                 <input class="pages__radio" [id]="page" [checked]="currentPage === page" type="radio" id="{{page}}"
                     name="pagesButton">
                 <label (click)="pageClick(page)" for="{{page}}" class="pages__label cursor-pointer">{{page}}</label>
@@ -64,7 +64,8 @@
         </div>
         <div class="w-1/5 cursor-pointer" (click)="nextPage()">
             <div class="w-1/5 opacity:0 md:hidden">.</div>
-            <img src="../../../assets/img/Arrow left.png" alt="Arrow2" class="rotate-180 hidden md:block">
+            <img src="../../../assets/img/Arrow left.png" alt="Arrow2"
+                class="rotate-180 hidden md:block hover:scale-105">
         </div>
     </section>
 </main>
