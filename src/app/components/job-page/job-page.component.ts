@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { concat } from 'rxjs';
 import { IJobFullInfo } from 'src/app/interfaces/jobFullInfo.interface';
 import { JobInfoService } from 'src/app/services/job-info/job-info.service';
 import { LoadingService } from 'src/app/services/loading/loading-service.service';
@@ -22,7 +23,6 @@ export class JobPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobName = this.activatedRote.snapshot.paramMap.get('title');
-
     let jobListJson = localStorage.getItem('jobList');
     if (jobListJson) {
       let fullJobList = JSON.parse(jobListJson);
@@ -30,7 +30,21 @@ export class JobPageComponent implements OnInit {
     }
   }
 
+  updateJson(): void {
+    let jobListJson = localStorage.getItem('jobList');
+    if (jobListJson) {
+      let fullJobList = JSON.parse(jobListJson);
+      let newList = fullJobList.map((job: IJobFullInfo) => {
+        return job.id !== this.currentJob.id ? job :
+          this.currentJob;
+      })
+      localStorage.removeItem('jobList')
+      localStorage.setItem('jobList', JSON.stringify(newList));
+    }
+  }
+
   isRatedClick(): void {
     this.currentJob.isRated = !this.currentJob.isRated;
+    this.updateJson();
   }
 }
