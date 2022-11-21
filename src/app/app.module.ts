@@ -9,6 +9,7 @@ import { JobPageComponent } from './components/job-page/job-page.component';
 import { MapsComponent } from './components/job-page/components/maps/maps.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RatingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

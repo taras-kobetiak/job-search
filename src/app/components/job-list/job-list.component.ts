@@ -116,8 +116,7 @@ export class JobListComponent implements OnInit, OnDestroy {
   }
 
   onStarClicked(): void {
-
-    // this.upgradeJsonData();
+    this.upgradeJsonData();
   }
 
   prevPage(): void {

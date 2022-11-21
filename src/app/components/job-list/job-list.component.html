@@ -24,8 +24,14 @@
                 </div>
                 <div class="shrink-0 flex justify-between gap-4">
                     <div class="self-center shrink-0">
-                        <div class="item-reviews__rating simple-rating">
-                            <div class="simple-rating__items">
+
+                        <rating class="stars" style="color: #38415D; font-size: 15px;" [(ngModel)]="job.stars" [max]="5"
+                            [readonly]="false" (click)="onStarClicked()">
+                        </rating>
+
+
+                        <!-- <div class="item-reviews__rating simple-rating">
+                            <form class="simple-rating__items" (click)="onStarClicked($event, job)">
                                 <input [id]="i*1000+5" type="radio" class="simple-rating__item" [name]="job.id"
                                     value="5">
                                 <label [for]="i*1000+5" class="simple-rating__label"></label>
@@ -41,8 +47,11 @@
                                 <input [id]="i*1000+1" type="radio" class="simple-rating__item" [name]="job.id"
                                     value="1">
                                 <label [for]="i*1000+1" class="simple-rating__label"></label>
-                            </div>
-                        </div>
+                            </form>
+                        </div> -->
+
+
+
                     </div>
                     <div class="flex flex-col justify-between gap-2">
                         <div class="self-end hidden md:block">
