@@ -24,34 +24,9 @@
                 </div>
                 <div class="shrink-0 flex justify-between gap-4">
                     <div class="self-center shrink-0">
-
                         <rating class="stars" style="color: #38415D; font-size: 15px;" [(ngModel)]="job.stars" [max]="5"
                             [readonly]="false" (click)="onStarClicked()">
                         </rating>
-
-
-                        <!-- <div class="item-reviews__rating simple-rating">
-                            <form class="simple-rating__items" (click)="onStarClicked($event, job)">
-                                <input [id]="i*1000+5" type="radio" class="simple-rating__item" [name]="job.id"
-                                    value="5">
-                                <label [for]="i*1000+5" class="simple-rating__label"></label>
-                                <input [id]="i*1000+4" type="radio" class="simple-rating__item" [name]="job.id"
-                                    value="4">
-                                <label [for]="i*1000+4" class="simple-rating__label"></label>
-                                <input [id]="i*1000+3" type="radio" class="simple-rating__item" [name]="job.id"
-                                    value="3">
-                                <label [for]="i*1000+3" class="simple-rating__label"></label>
-                                <input [id]="i*1000+2" type="radio" class="simple-rating__item" [name]="job.id"
-                                    value="2">
-                                <label [for]="i*1000+2" class="simple-rating__label"></label>
-                                <input [id]="i*1000+1" type="radio" class="simple-rating__item" [name]="job.id"
-                                    value="1">
-                                <label [for]="i*1000+1" class="simple-rating__label"></label>
-                            </form>
-                        </div> -->
-
-
-
                     </div>
                     <div class="flex flex-col justify-between gap-2">
                         <div class="self-end hidden md:block">
@@ -72,7 +47,7 @@
         </div>
     </section>
     <section
-        class="mt-6 mb-4 mb- md:mt-12 md:mb-16 py-2 md:px-6 md:py-4  rounded-xl flex justify-between items-center  gap-5 shadow nav-width">
+        class="mt-6 mb-4  md:mt-12 md:mb-16 py-2 md:px-6 md:w-64 md:h-14  rounded-xl flex justify-between items-center  gap-5 shadow nav-width">
         <div class="w-1/5 cursor-pointer" (click)="prevPage()">
             <div class="w-1/5 opacity:0 md:hidden">.</div>
             <img src="../../../assets/img/Arrow left.png" alt="Arrow1" class="hidden md:block hover:scale-105">
@@ -80,7 +55,7 @@
         <div>
             <img src="../../../assets/img/Separator 1.png" alt="Separator">
         </div>
-        <div class="pages__items grow-1">
+        <div class="pages__items">
             <div *ngFor="let page of pages" class="pages__item hover:scale-105">
                 <input class="pages__radio" [id]="page" [checked]="currentPage === page" type="radio" id="{{page}}"
                     name="pagesButton">

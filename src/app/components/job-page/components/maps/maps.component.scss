@@ -62,6 +62,8 @@
 }
 
 .info-map__adress {
+    line-height: 36px;
+
     img {
         display: inline;
     }
@@ -71,6 +73,7 @@
 .info-map__email {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.669635);
+    opacity: 0.7;
 }
 
 .map__location {
